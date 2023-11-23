@@ -1,0 +1,38 @@
+<h1 class="mb-4">Standings of the top league </h1>
+<!-- {{ standingTable | json}} -->
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th></th>
+            <th></th>
+            <th>Name</th>
+            <th>Games</th>
+            <th>W</th>
+            <th>L</th>
+            <th>D</th>
+            <th>Goal Difference</th>
+            <th>Points</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr [class.selectedRow]="item.team.id == selectedRow" *ngFor="let item of standingTable; index as i">
+            <td> {{ i+1 }}</td>
+            <td>
+                <img class="img-fluid" width="25" [src]="item.team.logo" />
+
+            </td>
+            <td>
+                <a [routerLink]="['/scorecard/scorecard-detail', this.leagueID, item.team.id]">
+                    {{ item.team.name }} {{ item.team.id }}
+                </a>
+            </td>
+            <td>{{ item.all.played }}</td>
+            <td>{{ item.all.win }}</td>
+            <td>{{ item.all.lose }}</td>
+            <td>{{ item.all.draw }}</td>
+            <td>{{ item.goalsDiff }}</td>
+            <td>{{ item.points }}</td>
+
+        </tr>
+    </tbody>
+</table>

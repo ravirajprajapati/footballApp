@@ -1,0 +1,24 @@
+<h1 class="mb-4">Last game results </h1>
+
+<table class="table table-bordered">
+
+    <tbody>
+        <tr *ngFor="let item of fixtureTable; index as i">
+            <td>
+                <img class="img-fluid" width="25" [src]="item.teams.away.logo" />
+            </td>
+            <td>{{ item.teams.away.name }}</td>
+            <td>{{ item.score.fulltime.away }}</td>
+            <td>-</td>
+            <td>{{ item.score.fulltime.home }}</td>
+            <td>{{ item.teams.home.name }}</td>
+            <td>
+                <img class="img-fluid" width="25" [src]="item.teams.home.logo" />
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="my-5">
+    <button class="btn btn-lg btn-primary" (click)="goback()">Go BACK</button>
+</div>

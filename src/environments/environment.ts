@@ -3,8 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiUrl: '',
+  apiKey: '596d7d610fb8456ef3f9300060f951c3',
 };
+
+//https://v3.football.api-sports.io/standings?league=39&season=2023
 
 /*
  * For easier debugging in development mode, you can import the following file
