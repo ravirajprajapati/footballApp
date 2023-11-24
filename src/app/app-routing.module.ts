@@ -10,14 +10,18 @@ const routes: Routes = [
     component: ScorecardComponent,
     children: [
       {
-        path: 'scorecard-list/:id',
+        path: ':id',
         component: ScorecardListComponent,
       },
       {
-        path: 'scorecard-detail/:league/:id',
+        path: ':league/team/:id',
         component: ScorecardDetailComponent,
       },
     ],
+  },
+  {
+    path: '**',
+    redirectTo: '',
   },
 ];
 

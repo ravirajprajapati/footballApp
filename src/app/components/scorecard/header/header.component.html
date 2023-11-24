@@ -4,7 +4,7 @@
         <ul class="navbar-nav">
             <li class="nav-item" *ngFor="let item of country">
                 <a id="{{item.name}}Select" class="nav-link text-capitalize" href="#"
-                    [routerLink]="['/scorecard/scorecard-list', item.id]" routerLinkActive="active"
+                    [routerLink]="['/scorecard', item.id]" routerLinkActive="active"
                     [routerLinkActiveOptions]="{exact: false}">
                     {{ item.name }}
                 </a>

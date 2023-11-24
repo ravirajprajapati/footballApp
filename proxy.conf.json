@@ -2,13 +2,11 @@
     "/standing/*": {
         "target": "https://v3.football.api-sports.io",
         "secure": false,
-        "logLevel": "debug",
         "changeOrigin": true
     },
     "/fixtures/*": {
         "target": "https://v3.football.api-sports.io",
         "secure": false,
-        "logLevel": "debug",
         "changeOrigin": true
     }
 }

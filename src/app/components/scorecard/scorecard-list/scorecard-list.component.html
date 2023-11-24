@@ -1,5 +1,4 @@
 <h1 class="mb-4">Standings of the top league </h1>
-<!-- {{ standingTable | json}} -->
 <table class="table table-bordered">
     <thead>
         <tr>
@@ -15,15 +14,14 @@
         </tr>
     </thead>
     <tbody>
-        <tr [class.selectedRow]="item.team.id == selectedRow" *ngFor="let item of standingTable; index as i">
+        <tr [class.selectedRow]="item.team.id == selectedRow" *ngFor="let item of standingData; index as i">
             <td> {{ i+1 }}</td>
             <td>
                 <img class="img-fluid" width="25" [src]="item.team.logo" />
-
             </td>
             <td>
-                <a [routerLink]="['/scorecard/scorecard-detail', this.leagueID, item.team.id]">
-                    {{ item.team.name }} {{ item.team.id }}
+                <a href="javascript:;" (click)="teamClickEvent(item.team.id)">
+                    {{ item.team.name }}
                 </a>
             </td>
             <td>{{ item.all.played }}</td>
@@ -32,7 +30,6 @@
             <td>{{ item.all.draw }}</td>
             <td>{{ item.goalsDiff }}</td>
             <td>{{ item.points }}</td>
-
         </tr>
     </tbody>
 </table>

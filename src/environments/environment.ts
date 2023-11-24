@@ -8,8 +8,6 @@ export const environment = {
   apiKey: '596d7d610fb8456ef3f9300060f951c3',
 };
 
-//https://v3.football.api-sports.io/standings?league=39&season=2023
-
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

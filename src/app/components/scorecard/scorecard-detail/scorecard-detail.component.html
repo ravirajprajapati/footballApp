@@ -3,7 +3,7 @@
 <table class="table table-bordered">
 
     <tbody>
-        <tr *ngFor="let item of fixtureTable; index as i">
+        <tr *ngFor="let item of fixtureData; index as i">
             <td>
                 <img class="img-fluid" width="25" [src]="item.teams.away.logo" />
             </td>
@@ -20,5 +20,5 @@
 </table>
 
 <div class="my-5">
-    <button class="btn btn-lg btn-primary" (click)="goback()">Go BACK</button>
+    <button class="btn btn-lg btn-primary" (click)="back()">Go BACK</button>
 </div>

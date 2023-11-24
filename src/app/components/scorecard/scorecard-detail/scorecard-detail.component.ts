@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../../services/data.service';
-import { ActivatedRoute } from '@angular/router';
-import { map, take } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { FixtureApiResponse } from 'src/app/models/fixture-api-response.model';
 import { FixtureResponse } from 'src/app/models/fixture-reponse.model';
@@ -12,42 +11,41 @@ import { FixtureResponse } from 'src/app/models/fixture-reponse.model';
   styleUrls: ['./scorecard-detail.component.css'],
 })
 export class ScorecardDetailComponent implements OnInit {
-  fixtureData: FixtureApiResponse[] = new Array<FixtureApiResponse>();
-  fixtureTable!: FixtureResponse[];
-  // fixtureData: any;
-  // fixtureUrl: string = environment.apiUrl;
-  fixtureUrl: string = './assets/json/fixtures.json';
+  fixtureApiResponse: FixtureApiResponse[] = new Array<FixtureApiResponse>();
+  fixtureData!: FixtureResponse[];
+  fixtureUrl: string = environment.apiUrl;
   endpoints!: string;
-  leagueID!: string | null;
+  leagueID!: number | null;
   season!: number;
-  team!: string | null;
-  selected?: string;
+  team!: number;
+  selected?: number;
   noOfRecords: number = 10;
 
   constructor(
     private dataService: DataService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe(() => {
-      this.leagueID = this.route.snapshot.paramMap.get('league');
-      this.team = this.route.snapshot.paramMap.get('id');
+      this.leagueID = Number(this.route.snapshot.paramMap.get('league'));
+      this.team = Number(this.route.snapshot.paramMap.get('id'));
       let d = new Date();
       this.season = d.getFullYear();
-      this.selected = this.team ?? '';
-      // this.endpoints = `/fixtures?league=${this.leagueID}&season=${this.season}&team=${this.team}&last=${this.noOfRecords}`;
-      localStorage.setItem('selected', this.selected);
+      this.selected = this.team;
+      this.endpoints = `/fixtures?league=${this.leagueID}&season=${this.season}&team=${this.team}&last=${this.noOfRecords}`;
       this.dataService
         .getFixturesData(this.fixtureUrl, this.endpoints)
         .subscribe((res: FixtureApiResponse) => {
-          console.log('fixture_DATA', res);
-          this.fixtureTable = res.response;
+          this.fixtureData = res.response;
         });
     });
   }
 
-  goback() {
-    history.back();
+  back(): void {
+    this.router.navigate([`/scorecard/${this.leagueID}`], {
+      queryParams: { teamId: this.team },
+    });
   }
 }
