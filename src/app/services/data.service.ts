@@ -16,7 +16,6 @@ export class DataService {
     headers: new HttpHeaders({
       'x-rapidapi-host': environment.apiUrl,
       'x-apisports-key': environment.apiKey,
-      'Content-Type': 'application/json',
     }),
   };
 
