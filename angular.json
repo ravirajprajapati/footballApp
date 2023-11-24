@@ -65,12 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "football:build:production",
-              "proxyConfig": "proxy.conf.json"
+              "browserTarget": "football:build:production"
             },
             "development": {
-              "browserTarget": "football:build:development",
-              "proxyConfig": "proxy.conf.json"
+              "browserTarget": "football:build:development"
             }
           },
           "defaultConfiguration": "development"

@@ -24,7 +24,7 @@ export class DataService {
 
   getStandingData(
     url: string,
-    endpoints: string = ''
+    endpoints: string
   ): Observable<StandingApiResponse> {
     return this.http.get<StandingApiResponse>(
       url + endpoints,
@@ -34,7 +34,7 @@ export class DataService {
 
   getFixturesData(
     url: string,
-    endpoints: string = ''
+    endpoints: string
   ): Observable<FixtureApiResponse> {
     return this.http.get<FixtureApiResponse>(url + endpoints, this.httpOptions);
   }
