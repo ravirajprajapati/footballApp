@@ -18,7 +18,6 @@ export class ScorecardDetailComponent implements OnInit {
   leagueID!: number | null;
   season!: number;
   team!: number;
-  selected?: number;
   noOfRecords: number = 10;
 
   constructor(
@@ -33,7 +32,6 @@ export class ScorecardDetailComponent implements OnInit {
       this.team = Number(this.route.snapshot.paramMap.get('id'));
       let d = new Date();
       this.season = d.getFullYear();
-      this.selected = this.team;
       this.endpoints = `/fixtures?league=${this.leagueID}&season=${this.season}&team=${this.team}&last=${this.noOfRecords}`;
       this.dataService
         .getFixturesData(this.fixtureUrl, this.endpoints)
